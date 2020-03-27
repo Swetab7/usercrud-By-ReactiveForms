@@ -1,0 +1,19 @@
+<form [formGroup]="loginForm" (ngSubmit)="submitForm()">
+  <div id="login-box">
+    <div class="left">
+      <h1>Login here</h1>
+
+       <input type="text" formControlName="username" placeholder="Username" id="username">
+        <div *ngIf="submitted && f.username.errors" class="test">
+              <div *ngIf="f.username.errors.required">User Name is required</div>
+        </div>
+
+      <input type="password" formControlName="password" placeholder="Password">
+        <div *ngIf="submitted && f.password.errors" class="test">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+
+        <input  type="submit" name="signup_submit"  value="Login" />
+    </div>
+  </div>
+</form>

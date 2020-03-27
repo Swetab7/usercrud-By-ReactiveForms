@@ -1,0 +1,57 @@
+<form [formGroup]="signupForm" (ngSubmit)="submitForm()">
+  <div id="login-box">
+    <div class="left">
+      <h1>Sign up</h1>
+      <input type="text" formControlName="fname" placeholder="FirstName" id="fname">
+        <div *ngIf="submitted && f.fname.errors" class="test">
+          <div *ngIf="f.fname.errors.required">First name is required</div>
+        </div>
+
+      <input type="text" formControlName="lname" placeholder="LastName" id="lname">
+        <div *ngIf="submitted && f.lname.errors" class="test">
+          <div *ngIf="f.lname.errors.required">Last name is required</div>
+        </div>
+
+      <input type="email" formControlName="email" placeholder="Email" id="email">
+        <div *ngIf="submitted && f.email.errors" class="test">
+              <div *ngIf="f.email.errors.required">Email is required</div>
+              <div *ngIf="f.email.errors.email">Enter valid email</div>
+        </div>
+
+      <input type="text" formControlName="username" placeholder="CreatUsername" id="username">
+        <div *ngIf="submitted && f.username.errors" class="test">
+              <div *ngIf="f.username.errors.required">User Name is required</div>
+        </div>
+
+      <input type="password" formControlName="password" placeholder="Password">
+        <div *ngIf="submitted && f.password.errors" class="test">
+              <div *ngIf="f.password.errors.required">Password is required</div>
+        </div>
+
+      <input *ngIf="signup_btn" type="submit" name="signup_submit"  value="SignUp" />
+      
+      <input *ngIf="update_btn" type="submit" name="update" value="Update" 
+      (click)="update(f.index)">
+    </div>
+  </div>
+</form>
+
+<table class="table table-bordered table-condensed table-striped ">
+  <tr id="tdata">
+    <th>First name</th>
+    <th>Lastname</th>
+    <th>Email</th>
+    <th>Username</th>
+    <th>Password</th>
+  </tr>
+  <tr *ngFor="let data of signupdata;let i=index">
+    <td>{{data.fname}}</td>
+    <td>{{data.lname}}</td>
+    <td>{{data.email}}</td>
+    <td>{{data.username}}</td>
+    <td>{{data.password}}</td>
+    <td><button (click)="edit(data,i)">Edit</button></td>
+    <td><button (click)="delete(i)">delete</button></td>
+    <td><button>Detail</button></td>
+  </tr>
+</table>
